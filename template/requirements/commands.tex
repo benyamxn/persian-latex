@@ -1,0 +1,160 @@
+%_______________mathematical macros:_________________%
+\newcommand{\norm}[1]{\left|\left| #1 \right|\right|}
+\newcommand{\on}[2]{\Big|_{#2}^{#1}}
+\newcommand{\inn}[1]{\langle #1\rangle}
+\newcommand{\LO}[1]{\mathcal{L}(#1)}
+\newcommand{\img}{\mathrm{Img }\ }
+\newcommand{\pr}[1]{\left(#1\right)}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rp}{\mathbb{R}^+}
+\newcommand{\Zp}{\mathbb{Z}^+}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\qed}{\hfill $\blacksquare$}
+\newcommand{\ped}{\hfill $\square$}
+\newcommand{\size}[1]{\left|#1\right|}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\rond}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\spn}[1]{\mathrm{span}\left(#1\right)}
+
+\newcommand{\naabiRule}{\hfill\foreach \n in {1,...,52}{$-$}%
+}
+
+\newcommand{\dotrule}{
+	\foreach \n in {1,...,65}{$.$\hspace{.15cm}}
+	\vspace{-.5cm}\newline
+}
+
+\newenvironment{prob}{\stepcounter{probcounter}\noindent\large\textbf{\probname}\ 			\theprobcounter.\null\vspace{-.125cm}\normalsize\newline	\naabiRule\noindent}
+{‌
+	\hrule
+	\vspace{.5cm}
+}
+
+\newenvironment{probnum}[1]{\setcounter{probcounter}{#1}\addtocounter{probcounter}{-1}
+	\begin{prob}
+}
+{	
+	\end{prob}
+}
+
+\newenvironment{sol}{
+	\noindent\textbf{راه حل.}}
+{%
+	\hfill%
+	$\blacksquare$
+	\vspace{.2cm}
+	\hrule
+	\vspace{.5cm}
+}
+
+\newcommand{\cover}[3]{
+	\newcounter{probcounter}
+	\begin{center}
+		
+		بسمه تعالیٰ\\
+		\vspace*{2 cm}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.3\textwidth]{logo}
+			\caption*{\makecell{\normalsize\institudeName\\\small\departmentName}}
+		\end{figure}
+		\vspace{1 cm}
+		\hrule
+		\vspace{.5cm}
+		\fontsize{34}{34}\textbf{
+			\type #3 درس\\
+			\vspace*{0.5 cm}
+			#1\\
+			\vspace{0.75 cm}
+		}
+		\hrule
+		\vspace{1.5cm}
+		\normalfont
+		\Large{
+			مدرس:
+			 #2\\}
+		\vspace{1cm}
+		\large{
+			\myname\\
+			\mystdID
+		}
+		\normalsize
+		\vfill{\semester}
+	\end{center}
+	\thispagestyle{empty}
+	\newpage
+	\null
+	\thispagestyle{empty}
+	\newpage
+	\setcounter{page}{1}
+}
+
+\newcommand{\header}[3]{
+	\null\vspace{-2cm}
+	\newcounter{probcounter}
+	\begin{figure}[H]
+		\begin{picture}(0,0)\unitlength=1cm
+		\iflogo
+			\put (13.125, -2.25) {
+				\includegraphics[width=0.17\textwidth]{logo}
+			}
+		\fi
+		\put (12.9, -3.1) {
+			\makecell{\small{\departmentName}\\
+				مدرس:  #2}
+		}
+		\end{picture}
+	\end{figure}
+	\begin{center}
+		\null
+		\vspace{-2cm}
+		\small{
+			بسمه تعالیٰ
+		}\\
+		\vspace{.5cm}
+		\large{\textbf{
+				\type #3 درس #1
+		}}\\\vspace{.2cm}
+		\small{\semester}\\\normalsize
+		\flushright{
+			\myname
+			\hspace{.5cm}
+			\mystdID
+		}
+		\vspace{.65cm}
+		\hrule
+		\vspace{.2cm}
+	\end{center}
+}
+
+\newenvironment{lemmanum}[1]{
+	\textbf{لم #1.}
+	\begin{itshape}%
+	}
+	{\end{itshape}
+	\newline\dotrule}
+
+\newenvironment{lemma}{
+	\textbf{لم.}%
+	\begin{itshape}%
+	}
+	{\end{itshape}
+	\newline\dotrule}
+
+\newenvironment{customEnv}[1]{%
+	\noindent\textbf{#1.}\noindent
+	\begin{itshape}%	
+	}
+	{\end{itshape}
+	\newline\dotrule}
+
+\newenvironment{customEnvnum}[2]{%
+	\noindent\textbf{#1 #2.}\noindent
+	\begin{itshape}%
+	}
+	{\end{itshape}
+	\newline\dotrule}
+
+\newenvironment{proof}{\noindent\textit{اثبات.}}{\ped\newline\dotrule}

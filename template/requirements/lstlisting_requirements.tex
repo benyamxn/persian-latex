@@ -1,0 +1,28 @@
+\usepackage{listings}
+\definecolor{color1}{rgb}{0.58,0,0.82}
+\definecolor{color2}{rgb}{0.96,0.96,0.96}
+
+\lstset{
+	breaklines=true, 
+	numbers=left,
+	numberstyle=\tiny\color{black},
+	stepnumber=1,  
+	backgroundcolor=\color{color2},  
+	rulecolor=\color{white},
+	emphstyle={\color{blue}\textbf},
+	literate={./}{{{\color{red}./}}}2 {.^}{{{\color{blue}.\^{}}}}2 {=}{{{\color{blue}=}}}1,
+	language=[Latex]Tex,
+	frame=ltrb,
+	tabsize=4,
+	framesep=5pt,
+	basicstyle={\footnotesize\ttfamily},
+	keywordstyle=\ttfamily\bfseries\color{blue},
+	%	identifierstyle=\ttfamily\color{black}\bfseries,
+	commentstyle=\color{brown},
+	stringstyle=\ttfamily,
+	showstringspaces=ture
+}
+
+\lstset{
+	morekeywords={mamad}
+}
