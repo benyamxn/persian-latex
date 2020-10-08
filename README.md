@@ -49,7 +49,7 @@ will look something like:
 ![alt text](https://raw.githubusercontent.com/benyamxn/persian-latex/main/images/header.png "How header looks like")
 
 
-Make sure you have the fonts installed. They can be found in the `Fonts` folder; You can also change them at the end of `configs.tex` to have your own fonts.
+Make sure you have the fonts installed. They can be found in the `fonts` folder; You can also change them at the end of `configs.tex` to have your own fonts.
 
 It is adviced to have `Template.tex` stay as unoccupied as possible. Let `main.tex` be where you type most of your code.
 It is also highly recommended to change `./` at the beginning of `Template.tex` into the absolute path of where you saved the template; By doing so you will only need to copy `Template.tex` file and create a new `main.tex` file. Otherwise you need to copy the entire template anytime you want to use it.
