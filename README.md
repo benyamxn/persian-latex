@@ -1,13 +1,14 @@
 # persian-latex
 A Persian Latex Template that can be used in different instances such as assignments, exams, quizzes; Not suitable for long documents such as theses or project reports.
 
-**You can also read `Guide.pdf` file for insructions in Farsi.**
 
 # Features and user guide
 
 ## Config
-In order to start using the template yourself, open the `config.tex` file and chang the macros accordingly. Do NOT remove the first `%`.
+In order to start using the template yourself, open the `configs.tex` file and chang the macros accordingly. Do NOT remove the first `%`.
 ```Latex
+\logotrue % delete this line if you don't want to have the logo of your institude appear at top.
+
 \newcommand{\type}{%
 % type of the document you want to create (تمرین\کوئیز\میان‌ترم etc.)
 }
@@ -30,7 +31,7 @@ In order to start using the template yourself, open the `config.tex` file and ch
 % the term used to represent problems, for example: سؤال\مسئله
 }
 ```
-Replace `logo.png` with any other image you want as the logo of your institude. The image format doesn't neccessarily need to be `png`.
+Replace `logo.png` with any other image you want as the logo of your institude. The image format doesn't neccessarily need to be `png`. Make sure configs file has a `\logotrue` line.
 
 To create the main output, you must either use `\header` or `\cover`; Cover is more suitable when you need to physically print your document, otherwise use header. The syntax for both is similar:
 ```Latex
@@ -49,13 +50,13 @@ will look something like:
 ![alt text](https://raw.githubusercontent.com/benyamxn/persian-latex/main/images/header.png "How header looks like")
 
 
-Make sure you have the fonts installed. They can be found in the `Fonts` folder; You can also change them at the end of `configs.tex` to have your own fonts.
+Make sure you have the fonts installed. They can be found in the `fonts` folder; You can also change them at the end of `configs.tex` to have your own fonts.
 
 It is adviced to have `Template.tex` stay as unoccupied as possible. Let `main.tex` be where you type most of your code.
 It is also highly recommended to change `./` at the beginning of `Template.tex` into the absolute path of where you saved the template; By doing so you will only need to copy `Template.tex` file and create a new `main.tex` file. Otherwise you need to copy the entire template anytime you want to use it.
 
 ## Features and how to use them
-I have implemented environments to type problems, solutions, proofs and even environments with arbitrary names. All have appropiate visual properties which I'll explain in their own section.
+I have implemented environments to create problems, solutions, proofs and even environments with arbitrary names. All have appropiate visual properties which are explained in their own sections.
 
 ### Typing a problem
 Use `prob` environment to write the problem description (or solution) for your document:
@@ -81,7 +82,7 @@ Of course problem numbers will keep increasing, following the number you type. H
 You can by all means use `prob` just to type the solution of the problem; But in case you wanted to have both problem description and its solution, you just need to use `sol` environment after the problem:
 ```Latex
 \begin{sol}
-	% problem
+	% solution
 \end{sol}
 ```
 At the end of `sol`, a black square is added at the end of the final line to indicate the end of the solution. Here's how it looks like:
@@ -89,7 +90,7 @@ At the end of `sol`, a black square is added at the end of the final line to ind
 ![alt text](https://raw.githubusercontent.com/benyamxn/persian-latex/main/images/sol.png "Example of sol environment")
 
 ### Typing an environment with custom name
-Sometimes you might feel the need to have a section of your solution to have a statement as claim, lemma etc. You can use `customEnv` to have a statement labeled by your desired name; The body of the environment will have italic text. By default, `customEnv` won't have a counter for your environment. You can instead use `customEnvnum` to have multiple instances of a custom environment.
+Sometimes you might feel the need to have a section of your solution to have a statement as claim, lemma etc. You can use `customEnv` to have a statement labeled by your desired name; The body of the environment will have italic text. By default, `customEnv` won't be enumerated. You can instead use `customEnvnum` to add a number for the environment; Useful when you want to have multiple instances of your custom environment.
 ```Latex
 \begin{customEnv}{envName}
 	% an environment labeled by envName
@@ -99,7 +100,7 @@ Sometimes you might feel the need to have a section of your solution to have a s
 	% an environment labeled by envName numbered by envNum
 \end{customEnvnum}
 ```
-The environment will look like this:
+A custom environment labeled by `محیط دل‌خواه` will look like this:
 
 ![alt text](https://raw.githubusercontent.com/benyamxn/persian-latex/main/images/customEnv.png "Example of custom environment")
 
@@ -115,4 +116,4 @@ Each custom environment most likely needs a proof after itself. I have a `proof`
 ![alt text](https://raw.githubusercontent.com/benyamxn/persian-latex/main/images/proof.png "Example of proof environment")
 
 ### Mathematical Macros
-I've added some macros to help typing mathemathical equations in some particular cases. Read `mathemathical_macros.pdf` to see the use cases.
+I've added some macros to help typing mathemathical equations in some particular cases. Read `examples/mathemathical_macros.pdf` to see the use cases.
