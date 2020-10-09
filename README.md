@@ -5,7 +5,7 @@ A Persian Latex Template that can be used in different instances such as assignm
 # Features and user guide
 
 ## Config
-In order to start using the template yourself, open the `configs.tex` file and chang the macros accordingly. Do NOT remove the first `%` for any of them.
+In order to start using the template yourself, open the `configs.tex` file and change the macros accordingly. Do NOT remove the first `%` for any of them.
 ```Latex
 \logotrue % delete this line if you don't want to have the logo of your institude appear at top.
 
@@ -33,7 +33,7 @@ In order to start using the template yourself, open the `configs.tex` file and c
 ```
 Replace `logo.png` with any other image you want as the logo of your institude. The image format doesn't neccessarily need to be `png`. Make sure configs file has a `\logotrue` line.
 
-`Template.tex` is the file you need to complie. To create the main output, you must either use `\header` or `\cover`; Cover is more suitable when you need to physically print your document, otherwise use header. The syntax for both is similar:
+`Template.tex` is the file you need to complie. To create an output, you must either use `\header` or `\cover` after `\begin{document}`. Cover is more suitable when you need to physically print your document, otherwise use header. The syntax for both is similar:
 ```Latex
 \header{courseName}
 {teacherName}
@@ -50,10 +50,25 @@ will look something like:
 ![alt text](https://raw.githubusercontent.com/benyamxn/persian-latex/main/images/header.png "How header looks like")
 
 
-Make sure you have the fonts installed. They can be found in the `fonts` folder; You can also change them at the end of `configs.tex` to have your own fonts.
+Make sure you have the fonts installed. They can be found in the `fonts` folder; You can also change the fonts at the end of `configs.tex` to use your desired fonts.
 
-It is adviced to have `Template.tex` stay as unoccupied as possible. Let `main.tex` be where you type most of your code.
-It is also highly recommended to change `./` at the beginning of `Template.tex` into the absolute path of where you saved the template; By doing so you will only need to copy `Template.tex` file and create a new `main.tex` file. Otherwise you need to copy the entire template anytime you want to use it.
+It is adviced to have `Template.tex` stay as unoccupied as possible. Let `main.tex` be where you type most of your code. This is how the document section should look like:
+```Latex
+\begin{document}
+	\header{courseName}
+		{teacherName}
+		{hwNumber}
+	\input{main}
+\end{document}
+```
+
+It is also highly recommended to change `./` at the beginning of `Template.tex` into the absolute path of where you saved the template.
+```Latex
+\makeatletter
+	\def\input@path{{/path/to/template/}}
+\makeatother
+```
+By doing so you will only need to copy `Template.tex` file and create a new `main.tex` file. Otherwise you need to copy the entire template anytime you want to use it.
 
 ## Features and how to use them
 I have implemented environments to create problems, solutions, proofs and even environments with arbitrary names. All have appropiate visual properties which are explained in their own sections.
@@ -65,7 +80,7 @@ Use `prob` environment to write the problem description (or solution) for your d
 	% problem
 \end{prob}
 ```
-The document will automatically start enumerating the problems, starting at 1; Problem number increases each time you use the `prob` environment.
+The template will automatically start enumerating the problems, starting at 1; Problem number increases each time you use the `prob` environment.
 You can also have a problem with your desired number by using `probnum`:
 ```Latex
 \begin{probnum}{--num--}
