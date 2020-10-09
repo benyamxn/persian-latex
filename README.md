@@ -10,7 +10,7 @@ In order to start using the template yourself, open the `configs.tex` file and c
 \logotrue % delete this line if you don't want to have the logo of your institude appear at top.
 
 \newcommand{\type}{%
-% type of the document you want to create (تمرین\کوئیز\میان‌ترم etc.)
+% type of the document you want to create (تمرین|کوئیز|میان‌ترم etc.)
 }
 \newcommand{\myName}{%
 % your full name
@@ -28,7 +28,7 @@ In order to start using the template yourself, open the `configs.tex` file and c
 % ongoing semseter, for example: نیم‌سال اول تحصیلی 00$-$1399
 }
 \newcommand{\probname}{%
-% the term used to represent problems, for example: سؤال\مسئله
+% the term used to represent problems, for example: سؤال|مسئله
 }
 ```
 Replace `logo.png` with any other image you want as the logo of your institude. The image format doesn't neccessarily need to be `png`. Make sure configs file has a `\logotrue` line.
@@ -65,7 +65,7 @@ It is adviced to have `Template.tex` stay as unoccupied as possible. Let `main.t
 It is also highly recommended to change `./` at the beginning of `Template.tex` into the absolute path of where you saved the template.
 ```Latex
 \makeatletter
-	\def\input@path{{/path/to/template/}}
+	\def\input@path{{/absolute/path/to/template/}}
 \makeatother
 ```
 By doing so you will only need to copy `Template.tex` file and create a new `main.tex` file. Otherwise you need to copy the entire template anytime you want to use it.
