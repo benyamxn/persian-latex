@@ -50,7 +50,7 @@ will look something like:
 ![alt text](https://raw.githubusercontent.com/benyamxn/persian-latex/main/images/header.png "How header looks like")
 
 
-Make sure you have the fonts installed. They can be found in the `fonts` folder; You can also change the fonts at the end of `configs.tex` to use your desired fonts.
+Make sure you have the fonts installed. They can be found in the `fonts` folder; You can also change the fonts at the end of `configs.tex` to use your desired fonts. **It seems like people using windows as their operating system have problems with 'Yas' font;** These users will likely have to specifically change `\setdigitfont{Yas}` into something else.
 
 It is adviced to have `Template.tex` stay as unoccupied as possible. Let `main.tex` be where you type most of your code. This is how the document section should look like:
 ```Latex
