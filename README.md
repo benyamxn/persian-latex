@@ -111,10 +111,10 @@ Sometimes you might feel the need to have a section of your solution to have a s
 	% an environment labeled by envName
 \end{customEnv}
 ```
-And to have them be enumerated, use (just `[]` is added):
+And to have them be enumerated, use customEnv with `[]`:
 ```Latex
 \begin[]{customEnv}{envName}
-	% an environment labeled by envName
+	% a numbered environment labeled by envName
 \end{customEnv}
 ```
 This will automatically number the environments with the same name accordingly; You can use this feature for up to 4 custom environments.
