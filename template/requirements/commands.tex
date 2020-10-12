@@ -21,6 +21,27 @@
 \newcommand{\naabiRule}{\hfill\foreach \n in {1,...,52}{$-$}%
 }
 
+\newcommand{\tw}{\textwidth}
+
+\makeatletter
+\def\gnewcommand{\g@star@or@long\new@command}
+\def\grenewcommand{\g@star@or@long\renew@command}
+\def\g@star@or@long#1{% 
+	\@ifstar{\let\l@ngrel@x\global#1}{\def\l@ngrel@x{\long\global}#1}}
+\makeatother
+
+\makeatletter
+\newcommand\stringequals[2]{%
+	\ifnum\pdf@strcmp{#1}{#2}=0 %
+	\expandafter\@firstoftwo
+	\else
+	\expandafter\@secondoftwo
+	\fi
+	{true}
+	{false}%
+}
+\makeatother
+
 \newcommand{\dotrule}{
 	\foreach \n in {1,...,65}{$.$\hspace{.15cm}}
 	\vspace{-.5cm}\newline
@@ -34,8 +55,8 @@
 
 \newenvironment{probnum}[1]{\setcounter{probcounter}{#1}\addtocounter{probcounter}{-1}
 	\begin{prob}
-}
-{	
+	}
+	{	
 	\end{prob}
 }
 
@@ -58,13 +79,13 @@
 		\begin{figure}[H]
 			\centering
 			\iflogo
-				\includegraphics[width=0.3\textwidth]{logo}
+			\includegraphics[width=0.3\textwidth]{logo}
 			\fi
 			\caption*{\makecell{\normalsize\institudeName\\\small\departmentName}}
 		\end{figure}
 		\vspace{1 cm}
 		\hrule
-		\vspace{.5cm}
+		\vspace{.75cm}
 		\fontsize{34}{34}\textbf{
 			\type #3 درس\\
 			\vspace*{0.5 cm}
@@ -76,7 +97,7 @@
 		\normalfont
 		\Large{
 			مدرس:
-			 #2\\}
+			#2\\}
 		\vspace{1cm}
 		\large{
 			\myname\\
@@ -99,9 +120,9 @@
 	\begin{figure}[H]
 		\begin{picture}(0,0)\unitlength=1cm
 		\iflogo
-			\put (13.125, -2.25) {
-				\includegraphics[width=0.17\textwidth]{logo}
-			}
+		\put (13.125, -2.25) {
+			\includegraphics[width=0.17\textwidth]{logo}
+		}
 		\fi
 		\put (12.9, -3.1) {
 			\makecell{\small{\departmentName}\\
@@ -131,30 +152,75 @@
 	\end{center}
 }
 
-\newenvironment{lemmanum}[1]{
-	\textbf{لم #1.}
-	\begin{itshape}%
+\newcounter{envCounter}
+\newcounter{curEnv}
+\newcounter{envOne}
+\newcounter{envTwo}
+\newcounter{envThree}
+\newcounter{envFour}
+\newcounter{isSet}
+\newenvironment{customEnv}[2][noNum]{%
+	\ifthenelse{\boolean{\stringequals{#1}{noNum}}}{
+		\noindent\textbf{#2.}\noindent
+	}{
+		\ifnum\the\value{envCounter}=0
+		\stepcounter{envCounter}
+		\expandafter\gnewcommand\csname envs\the\value{envCounter} \endcsname{#2}
+		\setcounter{isSet}{1}
+		\fi
+		\ifnum\the\value{envCounter}=1
+		\ifnum\the\value{isSet}=0
+		\ifthenelse{\NOT\boolean{\stringequals{\csname envs1 \endcsname}{#2}}}{
+			\stepcounter{envCounter}
+			\expandafter\gnewcommand\csname envs\the\value{envCounter} \endcsname{#2}
+			\setcounter{isSet}{1}
+		}{}
+		\fi
+		\fi
+		\ifnum\the\value{envCounter}=2
+		\ifnum\the\value{isSet}=0
+		\ifthenelse{\NOT \boolean{\stringequals{\csname envs2 \endcsname}{#2}}}{
+			\stepcounter{envCounter}
+			\expandafter\gnewcommand\csname envs\the\value{envCounter} \endcsname{#2}
+			\setcounter{isSet}{1}
+		}{}
+		\fi
+		\fi
+		\ifnum\the\value{envCounter}=3
+		\ifnum\the\value{isSet}=0
+		\ifthenelse{\NOT \boolean{\stringequals{\csname envs3 \endcsname}{#2}}}{
+			\stepcounter{envCounter}
+			\expandafter\gnewcommand\csname envs\the\value{envCounter} \endcsname{#2}
+			\setcounter{isSet}{1}
+		}{}
+		\fi
+		\fi
+		\setcounter{isSet}{0}
+		\ifthenelse{\boolean{\stringequals{#2}{\csname envs1 \endcsname}}}{
+			\stepcounter{envOne}
+			\setcounter{curEnv}{\the\value{envOne}}
+		}{}
+		\ifnum\the\value{envCounter}>1
+		\ifthenelse{\boolean{\stringequals{#2}{\csname envs2 \endcsname}}}{
+			\stepcounter{envTwo}
+			\setcounter{curEnv}{\the\value{envTwo}}
+		}{}
+		\fi
+		\ifnum\the\value{envCounter}>2 
+		\ifthenelse{\boolean{\stringequals{#2}{\csname envs3 \endcsname}}}{
+			\stepcounter{envThree}
+			\setcounter{curEnv}{\the\value{envThree}}
+		}{}
+		\fi
+		\ifnum\the\value{envCounter}>3
+		\ifthenelse{\boolean{\stringequals{#2}{\csname envs4 \endcsname}}}{
+			\stepcounter{envFour}
+			\setcounter{curEnv}{\the\value{envFour}}
+		}{}
+		\fi
+		\noindent\textbf{#2 \the\value{curEnv}.}\noindent
 	}
-	{\end{itshape}
-	\newline\dotrule}
-
-\newenvironment{lemma}{
-	\textbf{لم.}%
-	\begin{itshape}%
-	}
-	{\end{itshape}
-	\newline\dotrule}
-
-\newenvironment{customEnv}[1]{%
-	\noindent\textbf{#1.}\noindent
 	\begin{itshape}%	
-	}
-	{\end{itshape}
-	\newline\dotrule}
-
-\newenvironment{customEnvnum}[2]{%
-	\noindent\textbf{#1 #2.}\noindent
-	\begin{itshape}%
 	}
 	{\end{itshape}
 	\newline\dotrule}
