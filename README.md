@@ -105,19 +105,25 @@ At the end of `sol`, a black square is added at the end of the final line to ind
 ![alt text](https://raw.githubusercontent.com/benyamxn/persian-latex/main/images/sol.png "Example of sol environment")
 
 ### Typing an environment with custom name
-Sometimes you might feel the need to have a section of your solution to have a statement as claim, lemma etc. You can use `customEnv` to have a statement labeled by your desired name; The body of the environment will have italic text. By default, `customEnv` won't be enumerated. You can instead use `customEnvnum` to add a number for the environment; Useful when you want to have multiple instances of your custom environment.
+Sometimes you might feel the need to have a section of your solution to have a statement as claim, lemma etc. You can use `customEnv` to have a statement labeled by your desired name; The body of the environment will have italic text. You have the option to have your environments with or without numbering. To have them appear without any numbering, use:
 ```Latex
 \begin{customEnv}{envName}
 	% an environment labeled by envName
 \end{customEnv}
-
-\begin{customEnvnum}{envName}{envNum}
-	% an environment labeled by envName numbered by envNum
-\end{customEnvnum}
 ```
+And to have them be enumerated, use (just `[]` is added):
+```Latex
+\begin[]{customEnv}{envName}
+	% an environment labeled by envName
+\end{customEnv}
+```
+This will automatically number the environments with the same name accordingly; You can use this feature for up to 4 custom environments.
 A custom environment labeled by `محیط دل‌خواه` will look like this:
 
 ![alt text](https://raw.githubusercontent.com/benyamxn/persian-latex/main/images/customEnv.png "Example of custom environment")
+
+While the numbered version will look like this:
+![alt text](https://raw.githubusercontent.com/benyamxn/persian-latex/main/images/customEnvnum.png "Example of a numbered custom environment")
 
 ### Typing a proof
 Each custom environment most likely needs a proof after itself. I have a `proof` environment implemented for this reason:
