@@ -113,7 +113,7 @@ Sometimes you might feel the need to have a section of your solution to have a s
 ```
 And to have them be enumerated, use customEnv with `[]`:
 ```Latex
-\begin[]{customEnv}{envName}
+\begin{customEnv}[]{envName}
 	% a numbered environment labeled by envName
 \end{customEnv}
 ```
