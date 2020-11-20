@@ -8,6 +8,7 @@ A Persian Latex Template that can be used in different instances such as assignm
 In order to start using the template yourself, open the `configs.tex` file and change the macros accordingly. Do NOT remove the first `%` for any of them.
 ```Latex
 \logotrue % delete this line if you don't want to have the logo of your institude appear at top.
+\solutionfalse % change this line to \solutiontrue if you intend to use 'sol' environment.
 
 \newcommand{\type}{%
 % type of the document you want to create (تمرین|کوئیز|میان‌ترم etc.)
@@ -135,6 +136,28 @@ Each custom environment most likely needs a proof after itself. I have a `proof`
 `proof` environment will look like this:
 
 ![alt text](https://raw.githubusercontent.com/benyamxn/persian-latex/main/images/proof.png "Example of proof environment")
+
+### Correct Persian Enumeration
+Instead of using the defalut enumeration that LaTex provides, you can use `faEnum` environment; This will correctly enumerate each `\item` as in Persian alphabet.
+```Latex
+\beign{faEnum}
+  \item % this item will be labeled as الف)
+  \item % this item will be labeled as ب)
+  \item % this item will be labeled as پ)
+\end{proof}
+```
+![alt text](https://raw.githubusercontent.com/benyamxn/persian-latex/main/images/faEnum.png "Example of faEnum environment")
+
+You can also use the variant which places `-` instead of `)`:
+```Latex
+\beign{faEnumD}
+  \item % this item will be labeled as الف-
+  \item % this item will be labeled as ب-
+  \item % this item will be labeled as پ-
+\end{proof}
+```
+![alt text](https://raw.githubusercontent.com/benyamxn/persian-latex/main/images/faEnumD.png "Example of faEnumD environment")
+
 
 ### Mathematical Macros
 I've added some macros to help typing mathemathical equations in some particular cases. Read `examples/mathemathical_macros.pdf` to see the use cases.

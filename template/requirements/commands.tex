@@ -47,9 +47,9 @@
 	\vspace{-.5cm}\newline
 }
 
-\newenvironment{prob}{\stepcounter{probcounter}\noindent\large\textbf{\probname}\ 			\theprobcounter.\null\vspace{-.125cm}\normalsize\newline	\naabiRule\noindent}
+\newenvironment{prob}{\stepcounter{probcounter}\noindent\large\textbf{\probname}\ 			\theprobcounter.\null\ifsolution\vspace{-.125cm}\else\vspace{.125cm}\fi\normalsize\newline	\ifsolution\hrule\vspace{.3cm}\fi\noindent}
 {‌
-	\hrule
+	\ifsolution\naabiRule\vspace{-.45cm}\else\hrule\fi
 	\vspace{.5cm}
 }
 
@@ -226,3 +226,39 @@
 	\newline\dotrule}
 
 \newenvironment{proof}{\noindent\textit{اثبات.}}{\ped\newline\dotrule}
+
+\makeatletter
+\newcommand*{\faEnums}[1]{%
+  \expandafter\@faEnums\csname c@#1\endcsname%
+}
+
+\newcommand*{\@faEnums}[1]{%
+  \ifcase#1\or الف) \or ب) \or پ) \or ت) \or ج) \or چ) \or ح) \or )خ
+	 \or د) \or ذ) \or ر) \or ز) \or ژ) \or س) \or ش) \or ص) \or ض) \or ط) \or ظ) \or ع) \or غ) \or ف) \or ق)
+	 \or ک) \or گ) \or ل) \or م) \or ن) \or و) \or هـ) \or ی)
+  \else\@ctrerr\fi%
+}
+\AddEnumerateCounter{\faEnums}{\@faEnums}{0}
+\makeatother
+
+\makeatletter
+\newcommand*{\faEnumsD}[1]{%
+ \expandafter\@faEnumsD\csname c@#1\endcsname%
+}
+
+\newcommand*{\@faEnumsD}[1]{%
+	\ifcase#1\or الف- \or ب- \or پ- \or ت- \or ج- \or چ- \or ح- \or )خ
+	 \or د- \or ذ- \or ر- \or ز- \or ژ- \or س- \or ش- \or ص- \or ض- \or ط- \or ظ- \or ع- \or غ- \or ف- \or ق-
+	 \or ک- \or گ- \or ل- \or م- \or ن- \or و- \or هـ- \or ی-
+  \else\@ctrerr\fi%
+}
+\AddEnumerateCounter{\faEnumsD}{\@faEnumsD}{0}
+\makeatother
+
+\newenvironment{faEnum}[1][)]{%
+\ifthenelse{\boolean{\stringequals{#1}{-}}}
+{\begin{enumerate}[rightmargin=\parindent, label=\faEnumsD*]}
+{\begin{enumerate}[rightmargin=\parindent, label=\faEnums*]}
+}
+{\end{enumerate}
+}
