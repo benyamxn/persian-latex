@@ -144,7 +144,7 @@ Instead of using the defalut enumeration that LaTex provides, you can use `faEnu
   \item % this item will be labeled as الف)
   \item % this item will be labeled as ب)
   \item % this item will be labeled as پ)
-\end{proof}
+\end{faEnum}
 ```
 ![alt text](https://raw.githubusercontent.com/benyamxn/persian-latex/main/images/faEnum.png "Example of faEnum environment")
 
@@ -154,7 +154,7 @@ You can also use the variant which places `-` instead of `)`:
   \item % this item will be labeled as الف-
   \item % this item will be labeled as ب-
   \item % this item will be labeled as پ-
-\end{proof}
+\end{faEnumD}
 ```
 ![alt text](https://raw.githubusercontent.com/benyamxn/persian-latex/main/images/faEnumD.png "Example of faEnumD environment")
 
