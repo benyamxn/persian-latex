@@ -1,5 +1,6 @@
 # persian-latex
-A Persian Latex Template that can be used in different instances such as assignments, exams, quizzes; Not suitable for long documents such as theses or project reports.
+A Persian Latex Template that can be used in different instances such as assignments, exams, quizzes; Not suitable for long documents such as theses or project reports... yet!
+Feel free to send me your requests or ideas to improve the template.
 
 
 # Features and user guide

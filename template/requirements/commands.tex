@@ -120,14 +120,16 @@
 	\begin{figure}[H]
 		\begin{picture}(0,0)\unitlength=1cm
 		\iflogo
-		\put (13.125, -2.25) {
-			\includegraphics[width=0.17\textwidth]{logo}
+		\put (13.125, -1.75) {
+			\makecell{\includegraphics[width=0.17\textwidth]{logo}\\ \makecell{\small{\departmentName}\\
+			مدرس: #2}}
 		}
-		\fi
+		\else
 		\put (12.9, -3.1) {
 			\makecell{\small{\departmentName}\\
 				مدرس:  #2}
 		}
+		\fi
 		\end{picture}
 	\end{figure}
 	\begin{center}
