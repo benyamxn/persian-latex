@@ -161,4 +161,4 @@ You can also use the variant which places `-` instead of `)`:
 
 
 ### Mathematical Macros
-I've added some macros to help typing mathemathical equations in some particular cases. Read `examples/mathemathical_macros.pdf` to see the use cases.
+I've added some macros that make mathemathical equations easier to type in some specoific cases. Read `examples/mathemathical_macros.pdf` to see the use cases.
